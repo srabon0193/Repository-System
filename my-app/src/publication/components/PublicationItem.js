@@ -2,6 +2,7 @@ import React from "react";
 
 import Table from 'react-bootstrap/Table';
 import Card from "../../shared/components/UIElements/Card";
+import Button from "../../shared/components/FormElements/Button";
 import './PublicationItem.css';
 
 const PublicationItem = (props) => {
@@ -57,8 +58,8 @@ const PublicationItem = (props) => {
     </Table>
         </div>
         <div className="place-item__actions">
-            <button>EDIT</button>
-            <button>DELETE</button>
+            <Button to={`/publications/${props.id}`} >EDIT</Button>
+            <Button danger >DELETE</Button>
         </div>
       </Card>
     </li>
