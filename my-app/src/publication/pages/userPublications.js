@@ -24,6 +24,29 @@ const DUMMY= [
         scopusCitation: '1',
         access: '0',
         creator: 's1'
+    },
+
+    {
+        id: 'p2',
+        dept: 'Computer Science & Engineering',
+        school: 'SOET',
+        title: 'Sparse encoding algorithm for real-time ECG compression',
+        year: '2019',
+        date: '1/1/2019',
+        author: 'Roy R.B.;Roy A.;Mukherjee A.;Ghosh A.;Bhattacharyya S.;Naskar M.K.',
+        journal: 'Advances in Intelligent Systems and Computing',
+        volume: '727',
+        page: '31-38',
+        issue: ' ',
+        doi: '10.1007/978-981-10-8863-6_4',
+        type: 'Conference Paper',
+        scopus: 'Y',
+        wos: 'N',
+        ugc: 'N',
+        crossref: '5',
+        scopusCitation: '7',
+        access: '4',
+        creator: 'S2'
     }
 ]
 const UserPublications = () => {
