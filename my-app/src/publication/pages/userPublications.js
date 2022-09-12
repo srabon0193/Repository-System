@@ -1,5 +1,5 @@
 import React from "react";
-//import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PublicationList from "../components/PublicationList";
 
 const DUMMY= [
@@ -46,13 +46,13 @@ const DUMMY= [
         crossref: '5',
         scopusCitation: '7',
         access: '4',
-        creator: 'S1'
+        creator: 'S2'
     }
 ];
 const UserPublications = () => {
-    //const userId = useParams().userId;
-    //const loadedPublications = DUMMY.filter(publication => publication.creator === userId);
-    return <PublicationList items={DUMMY} />
+    const userId = useParams().userId;
+    const loadedPublications = DUMMY.filter(publication => publication.creator === userId);
+    return <PublicationList items={loadedPublications} />
 };
 
 export default UserPublications;
