@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import './NewPublication.css';
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
-import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../../shared/components/util/validators";
+import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../../shared/util/validators";
+import { useForm } from "../../shared/hooks/form-hook";
 
 const DUMMY= [
     {
@@ -59,6 +60,26 @@ const UpdatePublication =() => {
 
     const identifiedPublication=DUMMY.find(p=>p.id === publicationId);
     
+    const [formState,inputHandler]=useForm({
+        dept: {
+            value:identifiedPublication.dept,
+            isValid:true
+        },
+        title: {
+            value:identifiedPublication.title,
+            isValid:true
+        },
+        author: {
+            value:identifiedPublication.author,
+            isValid:true
+        }
+    },true);
+
+    const PublicationUpdteSubmit=event =>{
+        event.preventDefault();
+        console.log(formState.inputs);
+    };
+
     if(!identifiedPublication) {
         return (
             <div className="center">
@@ -67,7 +88,7 @@ const UpdatePublication =() => {
         );
     }
     return  (
-    <form className="place-form">
+    <form className="place-form" onSubmit={PublicationUpdteSubmit}>
         <Input
         id="dept"
         element="input"
@@ -75,9 +96,9 @@ const UpdatePublication =() => {
         label="Department"
         validators={[VALIDATOR_MINLENGTH(2)]}
         errorText="Please enter a valid department."
-        onInput={()=>{}}
-        value={identifiedPublication.dept}
-        valid={true}
+        onInput={inputHandler}
+        initialValue={formState.inputs.dept.value}
+        initialValid={formState.inputs.dept.isValid}
       />
       <Input
         id="title"
@@ -86,9 +107,9 @@ const UpdatePublication =() => {
         label="Title"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid title."
-        onInput={()=>{}}
-        value={identifiedPublication.title}
-        valid={true}
+        onInput={inputHandler}
+        initialValue={formState.inputs.title.value}
+        initialValid={formState.inputs.title.isValid}
       />
       <Input
         id="author"
@@ -97,11 +118,11 @@ const UpdatePublication =() => {
         label="Author"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid author."
-        onInput={()=>{}}
-        value={identifiedPublication.author}
-        valid={true}
+        onInput={inputHandler}
+        initialValue={formState.inputs.author.value}
+        initialValid={formState.inputs.author.isValid}
       />
-      <Button type="submit" disabled={true}>UPDATE</Button>
+      <Button type="submit" disabled={!formState.isValid}>UPDATE</Button>
     </form>
     )
 };
