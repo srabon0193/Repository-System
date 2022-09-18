@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route , Redirect , Switch} from 'react-router-
 import Users from './user/pages/users';
 import NewPublication from './publication/pages/NewPublication';
 import UserPublications from './publication/pages/userPublications';
+import UpdatePublication from './publication/pages/UpdatePublication';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 const App =() =>{
   return (
@@ -21,6 +22,9 @@ const App =() =>{
           </Route>
           <Route path="/publications/new" exact>
             <NewPublication />
+          </Route>
+          <Route path="/publications/:publicationId">
+            <UpdatePublication/>
           </Route>
           <Redirect to="/" />
         </Switch>
