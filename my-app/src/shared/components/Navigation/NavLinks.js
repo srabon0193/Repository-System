@@ -1,12 +1,15 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { AuthContext } from '../../context/auth-context';
 import './NavLinks.css';
 
 const NavLinks = props => {
+  const auth=useContext(AuthContext);
+  
   return <ul className="nav-links">
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn" >SOET</NavLink>
+      <NavLink to="/S1/publications" className="dropbtn" >SOET</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Computer Science & Engineering</NavLink>
         <NavLink to="/">Civil Engineering</NavLink>
@@ -15,14 +18,14 @@ const NavLinks = props => {
       </div>
     </li>
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn">SOMC</NavLink>
+      <NavLink to="/S2/publications" className="dropbtn">SOMC</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Journalism</NavLink>
         <NavLink to="/">Entertainment Media</NavLink>
       </div>
     </li>
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn">SOBAS</NavLink>
+      <NavLink to="/S3/publications" className="dropbtn">SOBAS</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Environmental Science</NavLink>
         <NavLink to="/">Chemistry & Physics</NavLink>
@@ -32,14 +35,14 @@ const NavLinks = props => {
       </div>
     </li>
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn">SOBE</NavLink>
+      <NavLink to="/S4/publications" className="dropbtn">SOBE</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Management</NavLink>
         <NavLink to="/">Economics and Commerce</NavLink>
       </div>
     </li>
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn">SOLACS</NavLink>
+      <NavLink to="/S5/publications" className="dropbtn">SOLACS</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Bengali language and Literature</NavLink>
         <NavLink to="/">Sociology</NavLink>
@@ -50,7 +53,7 @@ const NavLinks = props => {
       </div>
     </li>
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn">SOLB</NavLink>
+      <NavLink to="/S6/publications" className="dropbtn">SOLB</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Biochemistry</NavLink>
         <NavLink to="/">Biotechnology</NavLink>
@@ -58,33 +61,45 @@ const NavLinks = props => {
       </div>
     </li>
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn">SOSA</NavLink>
+      <NavLink to="/S7/publications" className="dropbtn">SOSA</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Agriculture</NavLink>
       </div>
     </li>
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn">SOMS</NavLink>
+      <NavLink to="/S8/publications" className="dropbtn">SOMS</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Pharmaceutical Technology</NavLink>
         <NavLink to="/">Allied Health Sciences</NavLink>
       </div>
     </li>
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn">SOLJ</NavLink>
+      <NavLink to="/S9/publications" className="dropbtn">SOLJ</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Law</NavLink>
       </div>
     </li>
     <li className='dropdown'>
-      <NavLink to="/" className="dropbtn">SOE</NavLink>
+      <NavLink to="/S10/publications" className="dropbtn">SOE</NavLink>
       <div className='dropdown-content'>
         <NavLink to="/">Department of Education</NavLink>
       </div>
     </li>
+    {auth.isLoggedIn && (
     <li className="dropdown">
-      <NavLink to="/auth" className="dropbtn"> AUTHENTICATE</NavLink>
+      <NavLink to="/publications/new" className="dropbtn">NEW</NavLink>
     </li>
+    )}
+    {!auth.isLoggedIn && (
+    <li className="dropdown">
+      <NavLink to="/auth" className="dropbtn">LOGIN</NavLink>
+    </li>
+    )}
+    {auth.isLoggedIn && (
+      <li>
+        <button onClick={auth.logout}>LOGOUT</button>
+      </li>
+    )}
   </ul>
 };
 

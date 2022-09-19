@@ -2,15 +2,16 @@ import React from "react";
 
 import Card from '../../shared/components/UIElements/Card'
 import PublicationItem from "./PublicationItem";
+import Button from "../../shared/components/FormElements/Button";
 import './PublicationList.css';
 
 const PublicationList = (props) => {
   if (props.items.length === 0) {
     return (
-      <div className="place-list center">
+      <div className="publicaiton-list center text-white">
         <Card>
           <h2>No publications found. Maybe create one?</h2>
-          <button>Share Publication</button>
+          <Button to="/publications/new">Share Publication</Button>
         </Card>
       </div>
     );

@@ -4,3 +4,13 @@
     padding: 0;
     width: 110rem;
   }
+.publicaiton-list{
+  list-style: none;
+    margin: 1rem auto;
+    padding: 0;
+    width: 90rem;
+}
+
+.publicaiton-list a:link, a:visited {
+  text-decoration: none;
+}
